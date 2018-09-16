@@ -4,7 +4,8 @@ This is java REST API project used for MoneySmart asssignment
 
 This problem can be solved in many ways. One of the approach can be to hash the id of the table or maintain a unique number somewhere (REDIS INCR functionality) so that whenever a new request comes, it assigns a new number to it. This number can then be hashed to any base string (in this application I have used base62, but this can be increased or decreased and can be jumbled up to avoid exposing real ids). Since I assumed that we might be doing some heavy analytics with this data, so I went with relational DB, otherwise we can go with NoSql DB also. Dong heavy queries in NoSql is difficult as compared to relational DB, that is why I used relational DB.
 
-Properties of the application are defined in src/urlshortner.properties . Database properties are in src/hibernate-mysql.properties . TO build this project, go the the root folder where build.xml is there. From this window, run command "ant". This will generate a war file. This file needs to be deployed in Apache-tomcat. 
+Properties of the application are defined in src/urlshortner.properties . Database properties are in src/hibernate-mysql.properties . Place the GEOIP.dat file where application can access this file and change this file location in urlshortner.properties file.
+To build this project, go the the root folder where build.xml is there. From this window, run command "ant". This will generate a war file. This file needs to be deployed in Apache-tomcat. 
 In DB, run the below scripts to create the tables.
 
 CREATE TABLE `request_location_info` (
