@@ -1,0 +1,66 @@
+<?xml version="1.0" ?> 
+<project name="UrlShortner" default="war">
+
+	<path id="compile.classpath">
+		<fileset dir="WebContent/WEB-INF/lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<target name="myConditionalTask-check">
+		<condition property="myConditionalTask-check-property-release">
+            <equals arg1="${platform}" arg2="release" trim="true"/>
+        </condition>
+    </target>
+	
+	<target name="init">
+		<echo message="Making directories"/>
+		<mkdir dir="build/classes"/>
+		<mkdir dir="dist" />
+	</target>
+	
+	
+	
+	<target name="copyFiles1" depends="myConditionalTask-check" if="myConditionalTask-check-property-release">
+		<copy todir="build/classes">
+			<fileset dir="src" includes="hibernate-mysql.release.properties" />
+		</copy>
+		
+		<copy todir="build/classes">
+			<fileset dir="src" includes="log4j.properties" />
+		</copy>
+		
+		<copy todir="build/classes">
+			<fileset dir="src" includes="urlshortner.release.properties" />
+		</copy>
+		
+		<copy todir="build/classes">
+			<fileset dir="src" includes="NotoSansCJKsc-Regular.otf" />
+		</copy>
+		
+		<move file="build/classes/hibernate-mysql.release.properties" tofile="build/classes/hibernate-mysql.properties"/>
+		<move file="build/classes/urlshortner.release.properties" tofile="build/classes/urlshortner.properties"/>
+	</target>
+	
+
+	<target name="compile" depends="init, copyFiles1">
+		<javac destdir="build/classes" debug="true" srcdir="src" encoding="utf-8">
+			<classpath refid="compile.classpath"/>
+		</javac>
+	</target>
+	
+	<target name="war" depends="compile">
+		<echo message="Compiling source code"/>
+		<war destfile="dist/UrlShortner.war" webxml="WebContent/WEB-INF/web.xml">
+			<fileset dir="WebContent"/>
+			<lib dir="WebContent/WEB-INF/lib"/>
+			<classes dir="build/classes"/>
+		</war>
+	</target>
+	
+	<target name="clean">
+		<delete dir="dist" />
+		<delete dir="build" />
+	</target>
+	
+</project>
