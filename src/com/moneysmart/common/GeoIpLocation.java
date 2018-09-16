@@ -15,7 +15,13 @@ public class GeoIpLocation {
 	
 	private GeoIpLocation() {
 		file = new File(URLShortnerApplication.properties.getProperty("GEO_IP_FILE_LOCATION"));
-		System.out.println("FIle is:: " + file);
+	}
+	
+	public static void main(String[] args) {
+		RequestLocation reqLoc = geoIpLocation.getLocation("192.168.0.1", null);
+		if(reqLoc != null) {
+			System.out.println("Test Passed");
+		}
 	}
 	
 	public RequestLocation getLocation(String ipAddress, RequestLocation requestLocation) {
@@ -31,7 +37,6 @@ public class GeoIpLocation {
 			file = new File(URLShortnerApplication.properties.getProperty("GEO_IP_FILE_LOCATION"));
 		}
 		LookupService lookup = new LookupService(file,LookupService.GEOIP_MEMORY_CACHE);
-		System.out.println("Ip: " + ipAddress);
 		Location locationServices = lookup.getLocation(ipAddress);
 		
 		if(locationServices != null) {

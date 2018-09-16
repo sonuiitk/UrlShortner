@@ -16,7 +16,7 @@ public class UniqueIdGenerator {
     
     
     public static void main(String[] args) {
-		//System.out.println(createUniqueID(1000L));
+		System.out.println(uniqueIdGenerator.createUniqueID(1000L));
     	System.out.println(uniqueIdGenerator.getDictionaryKeyFromUniqueID("qi"));
 	}
 

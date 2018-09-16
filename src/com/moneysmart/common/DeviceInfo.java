@@ -6,6 +6,17 @@ public class DeviceInfo {
 	
 	public static final DeviceInfo deviceInfo = new DeviceInfo();
 	
+	private DeviceInfo() {
+		
+	}
+	
+	public static void main(String[] args) {
+		RequestLocation reqLoc = deviceInfo.getDeviceInfo("Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36", null);
+		if(reqLoc != null) {
+			System.out.println("Test passed");
+		}
+	}
+	
 	public RequestLocation getDeviceInfo(String userAgent, RequestLocation requestLocation) {
 		
 		System.out.println("user agent: " + userAgent + " ,request locaton: " + requestLocation);
