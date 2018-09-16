@@ -53,3 +53,5 @@ If we even don't want this, we may go for user tracking / info collection from s
 6. Implementation of logger. I have implemented the logger in this application but not logging anything through the code.
 
 7. Make the random id of constant length, may be 6-8 characters. But some things have to be taken care of before doing that. One is the string which we are using for hashing.
+
+8. Can use Spring framework for dependency injection.
