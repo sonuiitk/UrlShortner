@@ -42,16 +42,18 @@ Enhancements:
 1. Currently there is no user management system is there. We can make the service premium by having on paid customer using it. Or atleast they should be our user. 
 If we even don't want this, we may go for user tracking / info collection from some cookie based system management.
 
-2. Right now I am not caching any request / entry. To serve requests faster, we might go with caching. We can implement caching in 2 ways. One can be least recently used cache and other one can be least frequently used cache. 
+2. Authentication and authorization for every request.
 
-3. Instead of going with MySql (relational database), we can go with any NoSql also. Because this site will be mostly real-only site, by using NoSql we can make it highly fault tolerable and during days of high hits we can expand it horizontally easily. Plus if we are not going to use complex queries in DB, NoSql's in-built search functionalities work better.
+3. Right now I am not caching any request / entry. To serve requests faster, we might go with caching. We can implement caching in 2 ways. One can be least recently used cache and other one can be least frequently used cache. 
 
-4. Right now there is no check for duplicate requests. With the help of cookies and hashing algorithms (hash of url is getting stored in DB), we can check whether the same user is sending the same url or not. A lot of possibilities are possible here depending on the feature.
+4. Instead of going with MySql (relational database), we can go with any NoSql also. Because this site will be mostly real-only site, by using NoSql we can make it highly fault tolerable and during days of high hits we can expand it horizontally easily. Plus if we are not going to use complex queries in DB, NoSql's in-built search functionalities work better.
 
-5. There is no view part here in this application. Mostly, they are serving as the APIs. Implementation of AJAX can be used here in some pages.
+5. Right now there is no check for duplicate requests. With the help of cookies and hashing algorithms (hash of url is getting stored in DB), we can check whether the same user is sending the same url or not. A lot of possibilities are possible here depending on the feature.
 
-6. Implementation of logger. I have implemented the logger in this application but not logging anything through the code.
+6. There is no view part here in this application. Mostly, they are serving as the APIs. Implementation of AJAX can be used here in some pages.
 
-7. Make the random id of constant length, may be 6-8 characters. But some things have to be taken care of before doing that. One is the string which we are using for hashing.
+7. Implementation of logger. I have implemented the logger in this application but not logging anything through the code.
 
-8. Can use Spring framework for dependency injection.
+8. Make the random id of constant length, may be 6-8 characters. But some things have to be taken care of before doing that. One is the string which we are using for hashing.
+
+9. Can use Spring framework for dependency injection.
